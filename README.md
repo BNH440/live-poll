@@ -1,2 +1,2 @@
-# stream-poll
-A real-time poll app for streamers
+# live-poll
+A real-time polling website
