@@ -33,3 +33,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+live-poll-firebase-adminsdk.json
