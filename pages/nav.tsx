@@ -64,7 +64,7 @@ const TextInput = forwardRef(
 // @ts-ignore
 const Form = ({ firstFieldRef, secondFieldRef, titleRef, onCancel }) => {
   const [options, setOptions] = useState(0);
-  const [invalidFields, setInvalidFields] = useState(["option-1", "option-2"]);
+  const [invalidFields, setInvalidFields] = useState(["poll-title", "option-1", "option-2"]);
   const [optionVals, setOptionVals] = useState({});
   const [loading, setLoading] = useState(false);
   const router = useRouter();
