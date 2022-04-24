@@ -5,6 +5,7 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
+  Center,
   CloseButton,
   Container,
   HStack,
@@ -16,7 +17,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Nav from "./nav";
-import { useEffect, useState } from "react";
+import {MutableRefObject, useEffect, useRef, useState} from "react";
 import { useRouter } from "next/router";
 import { get, getDatabase, ref } from "firebase/database";
 import { app } from "../firebase";
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const db = getDatabase(app);
+  const firstPinRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   const {
     isOpen: isVisible,
@@ -43,6 +45,7 @@ const Home: NextPage = () => {
           setLoading(false);
           setValue("");
           onOpen();
+          firstPinRef.current.focus();
         }
       });
     }
@@ -52,7 +55,7 @@ const Home: NextPage = () => {
     <>
       <Nav />
       <Container>
-        <VStack>
+        <VStack paddingTop={"1em"}>
           {isVisible ? (
           <Alert status="error" borderRadius={"10px"}>
             <AlertIcon />
@@ -66,22 +69,22 @@ const Home: NextPage = () => {
             />
           </Alert>
           ) : null}
-          <Container maxW="container.md">
+          <Center maxW="container.md">
             <HStack>
               <Text>Poll ID</Text>
-              <PinInput type="alphanumeric" value={value} onChange={setValue}>
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
+              <PinInput type="alphanumeric" value={value} onChange={setValue} placeholder={"0"}>
+                <PinInputField ref={firstPinRef}/>
+                <PinInputField/>
+                <PinInputField/>
+                <PinInputField/>
+                <PinInputField/>
+                <PinInputField/>
               </PinInput>
               <Button colorScheme="blue">
                 {loading ? <Spinner size="sm" /> : "Go"}
               </Button>
             </HStack>
-          </Container>
+          </Center>
         </VStack>
       </Container>
     </>

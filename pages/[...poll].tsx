@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Button,
+  Center,
   Container,
   Heading,
   Radio,
@@ -116,7 +117,11 @@ const Poll: NextPage = () => {
                   </Stack>
                 </RadioGroup>
                 <Button onClick={() => vote()}>
-                  {loading ? <Spinner size="sm" /> : "Vote"}
+                  {loading ? (
+                    <Spinner size="lg" />
+                  ) : (
+                    "Vote"
+                  )}
                 </Button>
               </VStack>
             </Container>
@@ -164,9 +169,9 @@ const Poll: NextPage = () => {
         </VStack>
       ) : (
         <>
-          <Container maxW={"container.md"}>
+          <Center>
             <Spinner size="xl" />
-          </Container>
+          </Center>
         </>
       )}
     </Fragment>
