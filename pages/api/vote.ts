@@ -16,6 +16,8 @@ export default async function handler(
     let option: any = req.query.option;
     let voteRef = db.ref(`polls/${id}/votes/${option}`);
 
+    console.log(req.socket.remoteAddress);
+
     voteRef.transaction((votes) => {
       if (votes >= 0) {
         votes++

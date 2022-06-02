@@ -92,7 +92,7 @@ const Poll: NextPage = () => {
     <Fragment>
       <Nav />
       {title != "" ? (
-        <VStack spacing={"2em"}>
+        <VStack spacing={"2em"} paddingTop={"2em"}>
           <Container maxW={"container.md"}>
             <Heading textAlign={"center"}>{title}</Heading>
           </Container>

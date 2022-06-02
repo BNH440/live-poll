@@ -20,7 +20,7 @@ import {
   ButtonGroup,
   Input,
   FormLabel,
-  Spinner,
+  Spinner, Switch, PopoverBody,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -28,7 +28,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   AddIcon,
-  MinusIcon,
+  MinusIcon, InfoIcon,
 } from "@chakra-ui/icons";
 import FocusLock from "react-focus-lock";
 import {
@@ -41,6 +41,7 @@ import {
   useState,
 } from "react";
 import {useRouter} from "next/router";
+import {string} from "prop-types";
 
 // eslint-disable-next-line react/display-name
 const TextInput = forwardRef(
@@ -179,6 +180,26 @@ const Form = ({ firstFieldRef, secondFieldRef, titleRef, onCancel }) => {
           <MinusIcon />
         </Button>
       </ButtonGroup>
+      <FormLabel htmlFor="settings">Settings</FormLabel>
+      <FormControl display='flex' alignItems='center'>
+        <FormLabel htmlFor='ip-check' mb='0' mr={'6px'}>
+          Check IP
+        </FormLabel>
+        {/* TODO add ip check */}
+        <Popover>
+          {/*
+          // @ts-ignore */}
+          <PopoverTrigger>
+            <InfoIcon cursor={"pointer"}/>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverBody>
+              The hash of the voter&apos;s IP will be logged and then compared against every subsequent voter to prevent double-voting.
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+        <Switch ml={"10px"} id='email-alerts' colorScheme={"teal"}/>
+      </FormControl>
       <ButtonGroup d="flex" justifyContent="flex-end">
         <Button variant="outline" onClick={onCancel}>
           Cancel
